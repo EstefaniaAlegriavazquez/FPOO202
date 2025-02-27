@@ -2,20 +2,52 @@
 import javax.swing.JOptionPane;
 
 public class Password {
-    private int longitud = 8;
-    private boolean incluir_Mayusculas;
-    private boolean incluir_Especiales;
+    private int longitud;
+    private boolean incluirMayusculas;
+    private boolean incluirEspeciales;
 
-    public String generarPassword(int longitud, boolean incluir_Mayusculas, boolean incluir_Especiales) {
+    // Constructor
+    public Password(int longitud, boolean incluirMayusculas, boolean incluirEspeciales) {
+        this.longitud = longitud;
+        this.incluirMayusculas = incluirMayusculas;
+        this.incluirEspeciales = incluirEspeciales;
+    }
+
+    // Getters y Setters
+    public int getLongitud() {
+        return longitud;
+    }
+
+    public void setLongitud(int longitud) {
+        this.longitud = longitud;
+    }
+
+    public boolean isIncluirMayusculas() {
+        return incluirMayusculas;
+    }
+
+    public void setIncluirMayusculas(boolean incluirMayusculas) {
+        this.incluirMayusculas = incluirMayusculas;
+    }
+
+    public boolean isIncluirEspeciales() {
+        return incluirEspeciales;
+    }
+
+    public void setIncluirEspeciales(boolean incluirEspeciales) {
+        this.incluirEspeciales = incluirEspeciales;
+    }
+
+    public String generarPassword() {
         String minusculas = "abcdefghijklmnopqrstuvwxyz";
         String mayusculas = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
         String especiales = "!@#$%^&*";
         String caracteres = minusculas;
 
-        if (incluir_Mayusculas) {
+        if (incluirMayusculas) {
             caracteres += mayusculas;
         }
-        if (incluir_Especiales) {
+        if (incluirEspeciales) {
             caracteres += especiales;
         }
 
@@ -35,15 +67,13 @@ public class Password {
             puntos++;
         }
         for (int i = 0; i < password.length(); i++) {
-            char c = password.charAt(i);
-            if (Character.isUpperCase(c)) {
+            if (Character.isUpperCase(password.charAt(i))) {
                 puntos++;
                 break;
             }
         }
         for (int i = 0; i < password.length(); i++) {
-            char c = password.charAt(i);
-            if ("!@#$%^&*".contains(String.valueOf(c))) {
+            if ("!@#$%^&*".contains(String.valueOf(password.charAt(i)))) {
                 puntos++;
                 break;
             }

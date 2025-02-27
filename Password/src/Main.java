@@ -2,7 +2,7 @@ import javax.swing.JOptionPane;
 
 public class Main {
     public static void main(String[] args) {
-        Password password = new Password();
+        Password password = null;
         String ultimaPassword = "";
 
         String opcion;
@@ -30,7 +30,10 @@ public class Main {
                     int especiales = JOptionPane.showConfirmDialog(null, "¿Quieres que tenga caracteres especiales?", "Configuración", JOptionPane.YES_NO_OPTION);
                     boolean incluirEspeciales = (especiales == JOptionPane.YES_OPTION);
 
-                    ultimaPassword = password.generarPassword(longitud, incluirMayus, incluirEspeciales);
+                    password = new Password(longitud, incluirMayus, incluirEspeciales);
+
+
+                    ultimaPassword = password.generarPassword();
                     JOptionPane.showMessageDialog(null, "Contraseña generada: " + ultimaPassword);
                     break;
 

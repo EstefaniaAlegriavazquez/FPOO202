@@ -3,15 +3,8 @@ import javax.swing.JOptionPane;
 
 public class Main {
     public static void main(String[] args) {
-        Cuenta cuenta = new Cuenta();
-        cuenta.NoCuenta = 123046139;
-        cuenta.Titular = "Estefania Alegria Vazquez";
-        cuenta.Saldo = 1200000;
-
-        Cuenta cuentaDestino = new Cuenta();
-        cuentaDestino.NoCuenta = 987654321;
-        cuentaDestino.Titular = "Cuenta Destino";
-        cuentaDestino.Saldo = 500000;
+        Cuenta cuenta = new Cuenta(123046139, "Estefania Alegria Vazquez", 1200000);
+        Cuenta cuentaDestino = new Cuenta(987654321, "Cuenta Destino", 500000);
 
         String opcion;
         do {
@@ -28,19 +21,19 @@ public class Main {
 
             switch (opcion) {
                 case "1":
-                    cuenta.ConsultarSaldo();
+                    cuenta.consultarSaldo();
                     break;
                 case "2":
                     float ingreso = Float.parseFloat(JOptionPane.showInputDialog("Monto a ingresar:"));
-                    cuenta.IngresarEfectivo(ingreso);
+                    cuenta.ingresarEfectivo(ingreso);
                     break;
                 case "3":
                     float retiro = Float.parseFloat(JOptionPane.showInputDialog("Monto a retirar:"));
-                    cuenta.RetirarEfectivo(retiro);
+                    cuenta.retirarEfectivo(retiro);
                     break;
                 case "4":
                     float deposito = Float.parseFloat(JOptionPane.showInputDialog("Monto a depositar en otra cuenta:"));
-                    cuenta.Depositar(cuentaDestino, deposito);
+                    cuenta.depositar(cuentaDestino, deposito);
                     break;
                 case "5":
                     JOptionPane.showMessageDialog(null, "Gracias por usar el sistema.");
