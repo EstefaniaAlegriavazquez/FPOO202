@@ -61,6 +61,26 @@ public class UserCRUD {
            System.out.println ("Error al intentar Consultar:"+ w.getMessage());
             return null;
         }
-    }
+    }//fin de lleve
     
+    public boolean actualizarUsuario(int id, String nombre, String correo, String contrasena) {
+        String sql = "UPDATE usuarios SET nombre = ?, correo = ?, contrasena = ? WHERE id = ?";
+    
+    try (Connection conexion = ConexionMySQL.conectar();
+         PreparedStatement ps = conexion.prepareStatement(sql)) {
+        
+        ps.setString(1, nombre);
+        ps.setString(2, correo);
+        ps.setString(3, contrasena); // ¡Este es el campo que falta!
+        ps.setInt(4, id);
+        
+        return ps.executeUpdate() > 0;
+    } catch (SQLException e) {
+        System.err.println("Error al actualizar: " + e.getMessage());
+        return false;
+    }
+    }
 }
+
+    
+

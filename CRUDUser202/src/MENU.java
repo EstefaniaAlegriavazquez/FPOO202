@@ -123,6 +123,8 @@ public class MENU extends javax.swing.JFrame {
             }
         });
     }
+    
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenu jMenu1;
@@ -134,3 +136,6 @@ public class MENU extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem4;
     // End of variables declaration//GEN-END:variables
 }
+
+
+
