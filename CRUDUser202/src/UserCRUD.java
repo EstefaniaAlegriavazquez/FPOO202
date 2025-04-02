@@ -80,7 +80,22 @@ public class UserCRUD {
         return false;
     }
     }
-}
+    
+    // Método para eliminar usuario
+    public boolean eliminar(int id) throws SQLException {
+        String sql = "DELETE FROM usuarios WHERE id = ?";
+        
+        try (PreparedStatement statement = conexion.prepareStatement(sql)) {
+            statement.setInt(1, id);
+            
+            // Ejecutar la eliminación
+            int filasAfectadas = statement.executeUpdate();
+            
+            // Si se afectó al menos una fila, la eliminación fue exitosa
+            return filasAfectadas > 0;
+        }
+    }
+    }
 
     
 
